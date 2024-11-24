@@ -43,27 +43,18 @@ This project automates the deployment of a Django application using Docker, Jenk
 ## Project Structure
 
 - **Dockerfile**: Docker containerization for the Django app
-- **docker-compose.yml**: Multi-container setup for Django and PostgreSQL
 - **Jenkinsfile**: Jenkins pipeline for CI/CD
-- **ec2-setup.sh**: Script to configure EC2 instance for Docker
-- **deploy.sh**: Deployment script to run Docker containers
 
 ## Getting Started
 
 ### Prerequisites:
 - Docker
-- Docker Compose
 - Jenkins
 - AWS EC2 instance
 
-### Running Locally:
-1. Clone the repository
-2. Run `docker-compose up --build` to start the app
 
 ### Deployment on EC2:
-1. Run `ec2-setup.sh` on your EC2 instance
-2. Configure Jenkins to use the Jenkinsfile for continuous integration
-3. Set up the `deploy.sh` script for deployment
+1. Configure Jenkins to use the Jenkinsfile for continuous integration
 
 Cheers and Happy Coding :)
 
