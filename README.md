@@ -1,62 +1,70 @@
-# django-todo
-A simple todo app built with django
+# docker-todo  
+A simple Todo app containerized with Docker and deployed using Kubernetes.  
 
-![todo App](https://raw.githubusercontent.com/shreys7/django-todo/develop/staticfiles/todoApp.png)
-### Setup
-To get this repository, run the following command inside your git enabled terminal
+![Todo App](https://via.placeholder.com/800x400.png?text=Todo+App)  
+
+---
+
+## Setup  
+
+To get this repository, run the following command in your git-enabled terminal:  
 ```bash
-$ git clone https://github.com/rahul-chahal/django-todo.git
-```
-You will need django to be installed in you computer to run this app. Head over to https://www.djangoproject.com/download/ for the download guide
-
-Once you have downloaded django, go to the cloned repo directory and run the following command
-
-```bash
-$ python manage.py makemigrations
+$ git clone https://github.com/rahul-chahal/docker-todo.git
 ```
 
-This will create all the migrations file (database migrations) required to run this App.
+Ensure you have Docker installed to containerize the app. You can download Docker from [here](https://docs.docker.com/get-docker/). Additionally, Kubernetes must be set up on your system for deployment.  
 
-Now, to apply this migrations run the following command
+---
+
+### Steps for Deployment  
+
+#### 1. Build the Docker Image  
+Navigate to the project directory and build the Docker image:  
 ```bash
-$ python manage.py migrate
+$ docker build -t dockerhub/todo-image:v1 .
 ```
 
-One last step and then our todo App will be live. We need to create an admin user to run this App. On the terminal, type the following command and provide username, password and email for the admin user
+#### 2. Verify Local Docker Images  
+Check if the image has been created locally:  
 ```bash
-$ python manage.py createsuperuser
+$ docker images
 ```
 
-That was pretty simple, right? Now let's make the App live. We just need to start the server now and then we can start using our simple todo App. Start the server by following command
-
+#### 3. Push Image to Docker Hub  
+Tag the Docker image for your repository:  
 ```bash
-$ python manage.py runserver
+$ docker tag dockerhub/todo-image:v1 151897/todo-image:v1
+```  
+
+Push the image to your Docker Hub repository:  
+```bash
+$ docker push 151897/todo-image:v1
 ```
 
-Once the server is hosted, head over to http://127.0.0.1:8000/todos for the App.
+#### 4. Create a Kubernetes Pod  
+1. Create a file named `pod.yaml` with the required pod configuration.  
+2. Apply the configuration to create the pod:  
+   ```bash
+   $ kubectl apply -f pod.yaml
+   ```
 
+#### 5. Verify Pod Status  
+Check if the pod is running:  
+```bash
+$ kubectl get pods -o wide
+```
 
-# DevOps Automation for Django Application
+#### 6. Deploy the Pod  
+1. Create a file named `deploy.yaml` for deployment configuration.  
+2. Apply the deployment:  
+   ```bash
+   $ kubectl apply -f deploy.yaml
+   ```
 
-This project automates the deployment of a Django application using Docker, Jenkins, and AWS EC2.
+#### 7. Forward Kubernetes Pod Port to Local Machine  
+Expose the pod to your local machine on port 8000:  
+```bash
+$ kubectl port-forward pod/<pod-name> 8000:8000
+```
 
-## Project Structure
-
-- **Dockerfile**: Docker containerization for the Django app
-- **Jenkinsfile**: Jenkins pipeline for CI/CD
-
-## Getting Started
-
-### Prerequisites:
-- Docker
-- Jenkins
-- AWS EC2 instance
-
-
-### Deployment on EC2:
-1. Configure Jenkins to use the Jenkinsfile for continuous integration
-
-Cheers and Happy Coding :)
-
-
-
+---
