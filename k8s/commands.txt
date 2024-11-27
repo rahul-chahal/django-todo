@@ -1,0 +1,24 @@
+first make docker image of our app.
+docker build -t dockerhub/todo-image:v1 .
+
+check images now in local machine
+docker images
+
+pushing pimage to dockerhub
+docker tag dockerhub/todo-image:v1 151897/todo-image:v1
+ocker push 151897/todo-image:v1
+
+create pod.yaml file and create pod using command:
+kubectl apply -f pod.yaml
+
+check created pod:
+kubectl get pods -0 wide
+
+deploying pod:
+create deploy.yaml
+kubectl apply -f deploy.yaml
+
+
+forwared k8 port to local machine using
+
+kubectl port-forward pod/<pod-name> 8000:8000
