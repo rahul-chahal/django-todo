@@ -67,4 +67,5 @@ Expose the pod to your local machine on port 8000:
 $ kubectl port-forward pod/<pod-name> 8000:8000
 ```
 
----
+Cheers and Happy Coding :)
+
