@@ -1,5 +1,5 @@
 # docker-todo  
-A simple Todo app containerized with Docker and deployed using Kubernetes.  
+A simple Todo application containerized using Docker and deployed on a Kubernetes cluster for easy scalability and management. This project demonstrates the power of containerization and orchestration, providing an automated, reliable, and scalable solution for running the application in production.
 
 ![Todo App](https://via.placeholder.com/800x400.png?text=Todo+App)  
 
