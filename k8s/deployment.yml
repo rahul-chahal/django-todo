@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: todo-app-deployment
   labels:
-    app: nginx
+    app: todo
 spec:
   replicas: 1
   selector:
