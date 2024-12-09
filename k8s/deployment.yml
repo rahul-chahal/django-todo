@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: todo-deployment-container-outside-k8
-        image: 151897/todo-image:v1
+        image: 151897/todo-image:v2
         ports:
         - containerPort: 8000
